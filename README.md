@@ -52,16 +52,14 @@ Typical deployment: one gateway can listen to multiple pods and produce per‑as
 ---
 
 
-## 3.1) Repository structure (so a judge can find things fast)
-
+## 3.1) Repository structure 
 ```
 thin-pod/
-├─ KiCad/                 # Schematics, PCB, symbols/footprints
+
 ├─ docs/                  # Design notes, app notes, datasheet list
 ├─ images/                # Renders, photos, diagrams (use these in Hackster)
 ├─ firmware/              # Pod + gateway firmware (C/C++)
 ├─ tools/                 # Python analysis / feature extraction
-├─ v1.0/                  # Archived first-gen design
 ├─ LICENCE-HARDWARE.md
 ├─ LICENCE-FIRMWARE.md
 ├─ LICENCE-DOCS.md
