@@ -93,7 +93,7 @@ This build is organised around **MCU dev boards** (fits the contest’s “Best 
 | Accelerometer | ADXL1005 | 1 per pod | Analogue, high bandwidth |
 | Passives (front‑end) | R/C network | 1 set per pod | Bias + simple filtering |
 | Interconnect | ribbon / JST / headers | as needed | Keep leads short on analogue path |
-| Power | battery pack / regulated supply | 1 per node | Choose for your enclosure and duty cycle |
+| Power | battery pack / regulated supply | 1 per node | Choose for enclosure and duty cycle |
 | (Optional) Wi‑Fi | ESP32‑C6 board/module | 1 | Backhaul from gateway |
 | (Optional) Enclosure | 3D print / off‑the‑shelf | 1 | Environment dependent |
 
