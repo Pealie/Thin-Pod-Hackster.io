@@ -57,7 +57,7 @@ Typical deployment: one gateway can listen to multiple pods and produce per‑as
 thin-pod/
 
 ├─ docs/                  # Design notes, app notes, datasheet list
-├─ images/                # Renders, photos, diagrams (use these in Hackster)
+├─ images/                # Renders, photos, diagrams
 ├─ firmware/              # Pod + gateway firmware (C/C++)
 ├─ tools/                 # Python analysis / feature extraction
 ├─ LICENCE-HARDWARE.md
