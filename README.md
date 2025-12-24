@@ -6,7 +6,7 @@ A small, field‑deployable **vibration sensing pod** for rotating machinery tha
 
 ## What this project is 
 
-Thin‑Pod is a stick‑on / bolt‑on vibration node designed for motors, pumps, gearboxes, fans, and other rotating assets. The pod captures high‑bandwidth vibration from an analogue accelerometer, packetises short windows, and transmits them over a short‑range radio link to a gateway. The gateway runs classic condition‑monitoring DSP (RMS, crest factor, envelope, spectral bands) and optional edge‑AI (TinyML / anomaly detection) to produce **actionable health signals** instead of constant raw streaming.
+Thin‑Pod is a compact vibration node designed for motors, pumps, gearboxes, fans, and other rotating assets. The pod captures high‑bandwidth vibration from an analogue accelerometer, packetises short windows, and transmits them over a short‑range radio link to a gateway. The gateway runs classic condition‑monitoring DSP (RMS, crest factor, envelope, spectral bands) and optional edge‑AI (TinyML / anomaly detection) to produce **actionable health signals** instead of constant raw streaming.
 
 ---
 
