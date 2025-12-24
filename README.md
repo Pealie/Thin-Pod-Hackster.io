@@ -72,8 +72,8 @@ This build is organised around **MCU dev boards**
 
 ### Required (minimum viable build)
 
-- **Gateway MCU dev board:** STM32 NUCLEO‑N657X0‑Q (receiver + DSP/ML)
-- **Pod radio dev board:** Qorvo DWM3001‑CDK (UWB link; pod‑side MCU handles sampling + packets)
+- **Gateway MCU dev board:** STM32 NUCLEO‑N657X0‑Q (receiver + DSP/ML), 
+- **Pod and Gateway radio dev boards:** Qorvo DWM3001‑CDK (UWB link; pod‑side MCU handles sampling + packets)
 - **Vibration sensor:** Analog Devices ADXL1005 (analogue MEMS accelerometer)
 
 ### Optional (nice‑to‑have)
