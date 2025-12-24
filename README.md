@@ -1,4 +1,4 @@
-# Thin‑Pod — Vibration Fault‑Detection Pod (Hackster "Best of 2025”) 
+# Thin‑Pod — Vibration Fault‑Detection Pod (Hackster'Best of 2025') 
 
 A small, field‑deployable **vibration sensing pod** for rotating machinery that streams raw vibration windows to a nearby gateway for **DSP + TinyML anomaly/fault detection**.
 
@@ -68,7 +68,7 @@ thin-pod/
 
 ## 4) Hardware used
 
-This build is organised around **MCU dev boards** (fits the contest’s “Best of MCU” lane):
+This build is organised around **MCU dev boards** 
 
 ### Required (minimum viable build)
 
@@ -136,7 +136,7 @@ A working end‑to‑end demo produces:
 
 ## 10) Challenges & lessons learned
 
-- Analogue front‑ends can be unintentionally “too heavy” for MEMS outputs: input capacitance and RC choices matter.
+- Analogue front‑ends can be unintentionally 'too heavy' for MEMS outputs: input capacitance and RC choices matter.
 - It’s worth validating the ADC node with a function generator before blaming firmware or radios.
 - Windowing + burst transmission keeps the data model clean and makes downstream DSP reproducible.
 
