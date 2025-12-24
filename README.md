@@ -15,7 +15,7 @@ Thin‑Pod is a stick‑on / bolt‑on vibration node designed for motors, pumps
 Unplanned downtime is expensive — and avoidable. A low‑cost vibration node that can be deployed quickly helps:
 
 - catch imbalance / looseness / misalignment early
-- trend bearing wear before it becomes a “stop the line” event
+- trend bearing wear before it becomes a 'stop the line' event
 - reduce waste by extending machine life and preventing catastrophic failures
 - cut energy use from poorly aligned or degrading machinery (often a hidden cost)
 
@@ -124,7 +124,7 @@ Repository locations (as they become available):
 
 ---
 
-## 9) Results (what “working” looks like)
+## 9) Results (what 'working' looks like)
 
 A working end‑to‑end demo produces:
 
