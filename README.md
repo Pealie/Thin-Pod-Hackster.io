@@ -158,6 +158,6 @@ This is experimental hardware. Use appropriate PPE and isolation when testing on
 
 ---
 
-## Repo topics (suggested)
+## Repo topics
 
 `vibration-analysis`, `condition-monitoring`, `predictive-maintenance`, `stm32`, `uwb`, `esp32-c6`, `low-power`, `kicad`, `accelerometer`, `edge-computing`, `iot`
