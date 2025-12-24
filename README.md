@@ -99,7 +99,7 @@ This build is organised around **MCU dev boards**
 
 ---
 
-## 6) Bring‑up checklist (hardware):**
+## 6) Bring‑up checklist (hardware):
 
 1. Verify all rails and reference voltages
 2. Confirm sensor bias is mid‑rail at rest
