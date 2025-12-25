@@ -56,11 +56,11 @@ Typical deployment: one gateway can listen to multiple pods and produce per‑as
 ```
 thin-pod/
 
-├─ docs/                  # Design notes, app notes, datasheet list
-├─ engineering logs/      # High level summaries
-├─ images/                # Renders, photos, diagrams
-├─ firmware/src/		   # Pod + gateway firmware (C/C++)
-├─ tools/                 # Python analysis / feature extraction
+├─ docs/					# Design notes, app notes, datasheet list
+├─ engineering logs/		# High level summaries
+├─ images/					# Renders, photos, diagrams
+├─ firmware/src/			# Pod + gateway firmware (C/C++)
+├─ tools/					# Python analysis / feature extraction
 ├─ LICENCE-HARDWARE.md
 ├─ LICENCE-FIRMWARE.md
 ├─ LICENCE-DOCS.md
