@@ -1,4 +1,4 @@
-Here are additional considerations, improvements, and nuanced strategies for a robust, **long-term secure deployment**, going beyond standard approaches to deeply protect both the Gateway (STM32 Nucleo-N657X0-Q + Qorvo DWM3001-CDK) and Thin-Pod (ESP32-UWB-DW3000 + e-peas AEM30940):
+Here are additional considerations, improvements, and nuanced strategies for a robust, **long-term secure deployment**, going beyond standard approaches to deeply protect both the Gateway (STM32 Nucleo-N657X0-Q + Qorvo DWM3001-CDK) and Thin-Pod (ESP32-UWB-DW3000 + optional e-peas AEM30940):
 
 ---
 
