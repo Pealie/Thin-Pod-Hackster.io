@@ -61,7 +61,7 @@ Latency: **< 40 ms** from sensor to fault decision.
 
 #### 5  | Roadmap Highlights
 
-| Q3-25                                                                 | Q4-25                                                       | 2026                                                                      |
+| Q2-26                                                                 | Q3-26                                                       | 2027                                                                      |
 | --------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------- |
 | Piezo harvester variant • Secure-boot + OTA • LC3 BLE audio streaming | Multimodal fusion (acoustic mic) • Battery-free field trial | Federated learning gateway • CE/FCC full compliance • OSHWA certification |
 
