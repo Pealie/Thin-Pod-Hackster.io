@@ -61,9 +61,9 @@ Latency: **< 40 ms** from sensor to fault decision.
 
 #### 5  | Roadmap Highlights
 
-| Q2-26                                                                 | Q3-26                                                       | 2027                                                                      |
+| Q1-26                                                                 | Q3-26                                                       | 2027                                                                      |
 | --------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Piezo harvester variant • Secure-boot + OTA • LC3 BLE audio streaming | Multimodal fusion (acoustic mic) • Battery-free field trial | Federated learning gateway • CE/FCC full compliance • OSHWA certification |
+| Initial iteration of Thin-Pod complete | Piezo harvester variant • Secure-boot + OTA | Federated learning gateway • CE/FCC full compliance • OSHWA certification |
 
 ---
 
