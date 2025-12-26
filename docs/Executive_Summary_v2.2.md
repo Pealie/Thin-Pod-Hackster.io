@@ -7,7 +7,7 @@
 - **ADC path (pod):** **ADXL1005 → Vout→RC(8K/680pF)→DWM3001 (nRF52833) ADC (P0.28, SAADC AIN4, J10, pin15)**.  
 - **Future - Optional Power (pod):** **AEM30941** energy harvester with **5F super-cap**.
 
-**Vibration-Based Fault Detection on STM32 – Version 2.0**
+**Vibration-Based Fault Detection on STM32 – Version 2.2**
 
 ---
 
