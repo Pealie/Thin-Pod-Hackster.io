@@ -63,7 +63,7 @@ thin-pod/
 ├─ LICENCE-HARDWARE.md
 ├─ LICENCE-FIRMWARE.md
 ├─ LICENCE-DOCS.md
-└─ LICENSE
+
 ```
 
 ## 4) Hardware used
