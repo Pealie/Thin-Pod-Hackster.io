@@ -5,7 +5,7 @@
 - **AI location:** Pod streams raw vibration windows; **all DSP + TinyML/NanoEdge run on the gateway**.
 - **Main MCU (gateway):** **STM32 NUCLEO-N657X0-Q**.
 - **ADC path (pod):** **ADXL1005 → Vout→RC(8K/680pF)→DWM3001 (nRF52833) ADC (P0.28, SAADC AIN4, J10, pin15)**.  
-- **Optional Power (pod):** **AEM30941** energy harvester with **5F super-cap**.
+- **Future - Optional Power (pod):** **AEM30941** energy harvester with **5F super-cap**.
 
 **Vibration-Based Fault Detection on STM32 – Version 2.0**
 
@@ -37,7 +37,7 @@ Results are transmitted locally over 100Mb/s RJ45 Ethernet or Wi-Fi and, with su
 
 #### 3  | Core Pipeline
 
-1. **Sampling** – ADXL1005 → 192 kS/s ADC DMA on STM32 NUCLEO-N657X0-Q
+1. **Sampling** – ADXL1005 → 192 kS/s ADC on DWM3001-CDK (sampling on pod, processing on gateway)
 2. **DSP** – RMS, envelope, 4 k FFT, spectral-kurtosis (option)
 3. **Edge AI**
 
