@@ -1,0 +1,13 @@
+{
+  "run": {"timestamp": 1758748778, "name": "fixed_run"},
+  "signal": {"fs_hz": 51200.000000, "duration_s": 4.000000, "window": "hann", "nperseg": 65536, "band_hz": [4000.0, 8000.0], "order_tracking": false, "fixed": true},
+  "geometry": {"n": 8, "d": 0.010000, "D": 0.050000, "beta_deg": 0.00, "rpm": 1800.00},
+  "predictions_hz": {"fr": 30.000000, "BPFO": 96.000000, "BPFI": 144.000000, "BSF": 72.000000, "FTF": 12.000000},
+  "detections_hz": {
+    "BPFO": null,
+    "BPFI": null,
+    "BSF": null,
+    "FTF": null
+  },
+  "decision": {"fault_class": "unknown", "confidence": 0.000, "rationale": "no characteristic lines matched with SNR"}
+}
