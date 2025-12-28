@@ -1,4 +1,4 @@
-# Thin‑Pod — Vibration Fault‑Detection Pod (Hackster 'Best of 2025' Competition) 
+# Thin‑Pod — Vibration Fault‑Detection Pod (Hackster.io 'Best of 2025' Competition) 
 
 A small, field‑deployable **vibration sensing pod** for rotating machinery that streams raw vibration windows to a nearby gateway for **DSP + TinyML anomaly/fault detection**.
 
