@@ -83,11 +83,5 @@ STM32N6 (SPI5)
 
 &nbsp; EN (C6)   ─────────────> ESP32 EN/RST
 
-Notes:
 
-Relevance of the older ‘v2.1 schematic’ text
-
-That sketch remains useful as a functional block diagram, but it shows a different GPIO set for a ribbon-cable SPI link (PB3/PB4/PB5/PC2 plus PB9). That looks like a custom-PCB mapping (SPI3-style) rather than the header-friendly NUCLEO bench wiring above (SPI5 on CN14).
-
-If the Gateway PCB is moving away from the NUCLEO headers, the SPI3-style mapping can be revived later. For the simplified ‘make it work on the bench’ phase, the CN14 SPI5 map is the clean baseline.
 
