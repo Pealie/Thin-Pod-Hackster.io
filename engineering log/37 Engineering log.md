@@ -6,4 +6,5 @@ Thin-Pod pinouts were simplified to the essentials for the Hackster scope, exclu
 
 A quick analogue sanity check was added to the record: the 8 kΩ / 680 pF RC forms an approximately 29 kHz low-pass corner, relevant for expected vibration bandwidth and ADC settling considerations.
 
-The firmware was examined with regard as a future architecture pattern to the Thin-Pod system: clear stage boundaries, minimised trusted code, signed-update mindset, and ‘observability engineering’ via deterministic boot markers, reason codes, and disciplined debug access, applied across the STM32N6 Gateway, the DWM3001 Thin-Pod node, and the ESP32-C6 network subsystem.
+The firmware was examined with regard to the Thin-Pod system as a future architecture pattern: clear stage boundaries, minimised trusted code, signed-update mindset, and ‘observability engineering’ via deterministic boot markers, reason codes, and disciplined debug access, applied across the STM32N6 Gateway, the DWM3001 Thin-Pod node, and the ESP32-C6 network subsystem.
+
