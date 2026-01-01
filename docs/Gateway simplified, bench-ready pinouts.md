@@ -85,3 +85,21 @@ STM32N6 (SPI5)
 
 
 
+
+
+Thin-Pod (simplified): ADXL1005 → DWM3001C-CDK (J10)
+
+
+
+ADXL1005 Vout  ──>  RC low-pass (8 kΩ series, 680 pF to GND)  ──>  DWM3001C-CDK J10.15 (ADC input)
+
+ADXL1005 GND   ────────────────────────────────────────────────┬──>  DWM3001C-CDK GND
+
+&nbsp;                                                              └──>  RC capacitor return (same GND)
+
+
+
+ADXL1005 VDD   ───────────────────────────────────────────────────>  3V3 rail
+
+
+
