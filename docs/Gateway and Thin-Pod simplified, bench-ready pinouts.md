@@ -105,3 +105,21 @@ ADXL1005 VDD   ─────────────────────�
 
 
 
+
+
+Note:
+
+
+
+Optional:
+
+
+
+A 100 nF decoupler close to ADXL1005 VDD/GND, even if the board already includes one.
+
+
+
+The ADC sees a biased output (typically mid-supply), so the waveform is an AC vibration signal riding on a DC offset.
+
+
+
