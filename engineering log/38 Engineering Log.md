@@ -1,4 +1,4 @@
-### Engineering log summary
+### Engineering Log summary
 
 * **Stage 1 bring-up remains complete**
 
