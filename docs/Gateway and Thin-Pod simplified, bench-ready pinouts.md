@@ -33,9 +33,12 @@ SPI bus: **same SPI5 on CN14**
 
 Control
 
-* CS (unique): CN14 **D9 (PD7)** → ESP32-C6 CS
-* INT (host-wake): CN14 **D14 (PC1)** → ESP32-C6 INT
-* RST/EN: **CN3 pin 17 = PC0** → ESP32-C6 EN/RST
+* CS (unique): CN14 **D9 (PD7)** → ESP32-C6 CS (chip select), any free GPIO can be assigned in firmware. Use:
+
+CS: D2 = GPIO2 (common, generally low-risk)
+
+* INT (host-wake): CN14 **D14 (PC1)** → ESP32-C6 INT (no pin explicitly labelled ‘INT’ on the XIAO diagram, so the ‘INT’ function is simply a chosen GPIO, D4 (GPIO22))
+* RST/EN: **CN3 pin 17 = PC0** → ESP32-C6 EN/RST (bottom of board labelled 'EN')
 
 Power
 
@@ -57,33 +60,33 @@ Shared-bus wiring sketch:
 
 STM32N6 (SPI5)
 
-&nbsp; SCK  ─────────┬────────> CDK J10-23
+  SCK  ─────────┬────────> CDK J10-23
 
-&nbsp;               └────────> ESP32 CLK
+                └────────> ESP32 CLK
 
-&nbsp; MOSI ─────────┬────────> CDK J10-19
+  MOSI ─────────┬────────> CDK J10-19
 
-&nbsp;               └────────> ESP32 MOSI
+                └────────> ESP32 MOSI
 
-&nbsp; MISO <────────┬────────  CDK J10-21
+  MISO <────────┬────────  CDK J10-21
 
-&nbsp;               └────────  ESP32 MISO
-
-
-
-&nbsp; CS (CDK)  ─────────────> CDK J10-24
-
-&nbsp; IRQ (CDK) ─────────────> CDK J10-15
-
-&nbsp; RST (CDK) ─────────────> CDK J10-12
+                └────────  ESP32 MISO
 
 
 
-&nbsp; CS (C6)   ─────────────> ESP32 CS
+  CS (CDK)  ─────────────> CDK J10-24
 
-&nbsp; INT (C6)  ─────────────> ESP32 INT
+  IRQ (CDK) ─────────────> CDK J10-15
 
-&nbsp; EN (C6)   ─────────────> ESP32 EN/RST
+  RST (CDK) ─────────────> CDK J10-12
+
+
+
+  CS (C6)   ─────────────> ESP32 CS
+
+  INT (C6)  ─────────────> ESP32 INT
+
+  EN (C6)   ─────────────> ESP32 EN/RST
 
 
 
@@ -97,7 +100,7 @@ ADXL1005 Vout  ──>  RC low-pass (8 kΩ series, 680 pF to GND)  ──>  DWM3
 
 ADXL1005 GND   ────────────────────────────────────────────────┬──>  DWM3001C-CDK GND
 
-&nbsp;                                                              └──>  RC capacitor return (same GND)
+                                                               └──>  RC capacitor return (same GND)
 
 
 
@@ -120,6 +123,4 @@ A 100 nF decoupler close to ADXL1005 VDD/GND, even if the board already includes
 
 
 The ADC sees a biased output (typically mid-supply), so the waveform is an AC vibration signal riding on a DC offset.
-
-
 
