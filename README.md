@@ -87,7 +87,7 @@ This build is organised around **MCU dev boards**
 
 
 | Item | Example part | Qty | Notes |
-|---|---:|---:|---|
+|---|---|---|---|
 | Gateway MCU dev board | STM32 NUCLEO‑N657X0‑Q | 1 | DSP/ML + system controller |
 | Pod radio dev board | Qorvo DWM3001‑CDK | 1+ | One per pod |
 | Accelerometer | ADXL1005 | 1 per pod | Analogue, high bandwidth |
