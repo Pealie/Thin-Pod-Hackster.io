@@ -1,22 +1,24 @@
 # Thin-Pod Option B carrier board v0.1
-## Power + signal architecture (CDK battery pads, not J10 ‘3V3’)
+## Power architecture: single battery input, single buck, split 3V3 to CDK + ADXL1005
 
-### Key constraint
-Although the DWM3001CDK J10 header is physically aligned to Raspberry Pi pins 1–26, J10 **pin 1** and **pin 17** are **NC** on the CDK.
-So the usual Raspberry Pi ‘3V3 on pin 1/17’ assumption does not hold for this board.
+### Intent
+A single JST-PH2 battery input feeds an S7V8F3 buck regulator. The buck output is a single system 3.3 V rail, then split into two *separately configurable* branches:
 
-### Practical v0.1 plan (single JST-PH2 input, battery-powered)
-**JST-PH2 IN (RAW_IN) → split**
-- **Branch A (CDK power):** `RAW_IN` → CDK **battery pads/connector** labelled `+` and `-` (two-wire feed).
-- **Branch B (sensor power):** `RAW_IN` → S7V8F3 → `3V3_A` → ADXL1005 VDD.
+- `3V3_CDK` → DWM3001CDK battery input pads/connector (labelled `+` / `-` on the CDK silkscreen)
+- `3V3_A` → ADXL1005 VDD
 
-**J10 stays signal + ground**
-- ADXL1005 Vout → RC (8 kΩ series, 680 pF to GND) → CDK J10.15 (`ADC_IN0`)
-- Ground reference to J10.6 (optionally also 9/14/20/25 for extra return)
+This matches the Thin-Pod bench note where the ADXL1005 VDD is a 3V3 rail and its analogue Vout is taken into the CDK ADC via J10.15. fileciteturn16file9
 
-### Optional bench mode (only if a verified 5 V rail exists)
-If a stable 5 V rail is available, the carrier can optionally feed J10 pins 2/4 (5V0) via a solder jumper.
-Keep this off for 3×AA unless deliberately verified.
+### CDK power entry note
+The DWM3001CDK is documented as being powerable from USB, Raspberry Pi interface, a battery, or an external power supply. The product brief calls out a 'Battery Connector' and shows `VBAT` feeding an on-board DC-DC to generate 3V3 rails. fileciteturn16file0
+
+Because the product brief does not publish a numeric `VBAT` range, treat '3V3 into VBAT' as a bench-validated assumption:
+- If the CDK behaves normally (boots, stable current, stable 3V3 test point), keep it.
+- If the CDK fails to start or is unstable, revert to powering the CDK via its supported 5V entry (USB or J10 5V0) and keep the S7V8F3 3V3 rail for the sensor only.
+
+### Practical build convention (v0.1)
+- Use a 2-wire flying lead from the carrier to the CDK `+` / `-` pads.
+- Add an isolation element on the carrier (jumper or 0 Ω link) so the CDK can be disconnected when USB power is attached.
 
 ## Sheet structure
 - `power.kicad_sch`
@@ -28,14 +30,15 @@ Power
 - `RAW_IN`
 - `RAW_IN_PROT`
 - `GND`
-- `VBAT_CDK` (two-wire feed to CDK `+` pad)
-- `3V3_A` (regulated sensor rail)
+- `3V3_SYS`
+- `3V3_CDK`
+- `3V3_A`
 
 Analogue
 - `ACC_VOUT`
 - `ADC_IN0`
 
-Optional bench-only
+Optional bench-only power (kept off by default)
 - `CDK_5V0`
 
 ## Default analogue population (bench-matching)
