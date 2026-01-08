@@ -7,5 +7,5 @@ This pack implements the following architecture:
 - `3V3_A` feeds ADXL1005 VDD.
 
 ## Practical cautions (v0.1)
-- The DWM3001CDK product brief identifies `VBAT` feeding an on-board DC-DC, but does not publish a numeric `VBAT` range. Treat '3V3 into VBAT' as a bench-validated assumption. fileciteturn16file0
+- The DWM3001CDK product brief identifies `VBAT` feeding an on-board DC-DC, but does not publish a numeric `VBAT` range. Treat '3V3 into VBAT' as a bench-validated assumption.
 - Add `JP_CDK_EN` so the CDK can be disconnected when powering from USB during flashing.
