@@ -7,10 +7,10 @@ A single JST-PH2 battery input feeds an S7V8F3 buck regulator. The buck output i
 - `3V3_CDK` → DWM3001CDK battery input pads/connector (labelled `+` / `-` on the CDK silkscreen)
 - `3V3_A` → ADXL1005 VDD
 
-This matches the Thin-Pod bench note where the ADXL1005 VDD is a 3V3 rail and its analogue Vout is taken into the CDK ADC via J10.15. fileciteturn16file9
+This matches the Thin-Pod bench note where the ADXL1005 VDD is a 3V3 rail and its analogue Vout is taken into the CDK ADC via J10.15.
 
 ### CDK power entry note
-The DWM3001CDK is documented as being powerable from USB, Raspberry Pi interface, a battery, or an external power supply. The product brief calls out a 'Battery Connector' and shows `VBAT` feeding an on-board DC-DC to generate 3V3 rails. fileciteturn16file0
+The DWM3001CDK is documented as being powerable from USB, Raspberry Pi interface, a battery, or an external power supply. The product brief calls out a 'Battery Connector' and shows `VBAT` feeding an on-board DC-DC to generate 3V3 rails.
 
 Because the product brief does not publish a numeric `VBAT` range, treat '3V3 into VBAT' as a bench-validated assumption:
 - If the CDK behaves normally (boots, stable current, stable 3V3 test point), keep it.
