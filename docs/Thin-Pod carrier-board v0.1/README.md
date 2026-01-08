@@ -1,5 +1,5 @@
 # What changed in this revision
-This pack implements the requested architecture:
+This pack implements the following architecture:
 
 `JST-PH2 battery in → S7V8F3 buck → 3V3_SYS → split to (3V3_CDK + 3V3_A)`
 
