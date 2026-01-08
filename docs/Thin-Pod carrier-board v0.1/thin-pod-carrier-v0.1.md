@@ -1,20 +1,22 @@
-# Thin-Pod Option B carrier board v0.1 (updated from bench-ready pinouts)
-This defines a bench-grade carrier PCB that removes breadboard wiring and makes the ADXL1005 analogue chain predictable, while keeping the DWM3001-CDK as the compute and radio core.
+# Thin-Pod Option B carrier board v0.1
+## Power + signal architecture (CDK battery pads, not J10 ‘3V3’)
 
-Source of truth for J10 usage and the Thin-Pod analogue path: the provided ‘Gateway and Thin-Pod simplified, bench-ready pinouts.md’.
+### Key constraint
+Although the DWM3001CDK J10 header is physically aligned to Raspberry Pi pins 1–26, J10 **pin 1** and **pin 17** are **NC** on the CDK.
+So the usual Raspberry Pi ‘3V3 on pin 1/17’ assumption does not hold for this board.
 
-## Scope
-- Power entry via JST-PH2 and optional bench header
-- S7V8F3 module footprint to generate a dedicated 3.3 V rail for the ADXL1005
-- ADXL1005 placement with tight decoupling
-- RC low-pass between `ACC_VOUT` and `ADC_IN0` matching the current bench wiring
-- DWM3001-CDK J10 header mating connector and a minimal pin-map
-- Test points for power and analogue nodes
+### Practical v0.1 plan (single JST-PH2 input, battery-powered)
+**JST-PH2 IN (RAW_IN) → split**
+- **Branch A (CDK power):** `RAW_IN` → CDK **battery pads/connector** labelled `+` and `-` (two-wire feed).
+- **Branch B (sensor power):** `RAW_IN` → S7V8F3 → `3V3_A` → ADXL1005 VDD.
 
-## Non-goals
-- No UWB RF redesign
-- No integration of the DWM3001C module directly onto the carrier in v0.1
-- No enclosure-optimised miniaturisation
+**J10 stays signal + ground**
+- ADXL1005 Vout → RC (8 kΩ series, 680 pF to GND) → CDK J10.15 (`ADC_IN0`)
+- Ground reference to J10.6 (optionally also 9/14/20/25 for extra return)
+
+### Optional bench mode (only if a verified 5 V rail exists)
+If a stable 5 V rail is available, the carrier can optionally feed J10 pins 2/4 (5V0) via a solder jumper.
+Keep this off for 3×AA unless deliberately verified.
 
 ## Sheet structure
 - `power.kicad_sch`
@@ -22,28 +24,21 @@ Source of truth for J10 usage and the Thin-Pod analogue path: the provided ‘Ga
 - `dwm3001_cdk_header.kicad_sch`
 
 ## Net naming
-Power and grounds
-- `RAW_IN` (battery or bench input, pre-protection)
-- `RAW_IN_PROT` (post reverse protection, pre distribution)
+Power
+- `RAW_IN`
+- `RAW_IN_PROT`
 - `GND`
-- `CDK_5V0` (power net delivered to CDK J10 pins 2/4, routed via a solder jumper)
+- `VBAT_CDK` (two-wire feed to CDK `+` pad)
+- `3V3_A` (regulated sensor rail)
 
-Sensor rail
-- `3V3_SENSOR` (S7V8F3 output for ADXL1005 VDD)
-- `3V3_A` (optional analogue sub-rail, default linked from `3V3_SENSOR`)
+Analogue
+- `ACC_VOUT`
+- `ADC_IN0`
 
-Analogue chain
-- `ACC_VOUT` (ADXL1005 output at sensor pin)
-- `ADC_IN0` (post-filter node at the CDK header pin)
+Optional bench-only
+- `CDK_5V0`
 
-Test points
-- `TP_RAW_IN`, `TP_RAW_IN_PROT`, `TP_CDK_5V0`
-- `TP_3V3_SENSOR`, `TP_3V3_A`
-- `TP_ACC_VOUT`, `TP_ADC_IN0`, `TP_GND`
-
-## Default analogue population for v0.1 (bench-matching)
+## Default analogue population (bench-matching)
 - `R_SER1 = 8.0 kΩ`
 - `C_SHUNT1 = 680 pF`
 - `C_PAR1` footprint present, DNP by default
-
-This matches the current Thin-Pod note: ‘ADXL1005 Vout → RC low-pass (8 kΩ series, 680 pF to GND) → DWM3001-CDK J10.15’.

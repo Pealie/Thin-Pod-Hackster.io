@@ -1,12 +1,19 @@
 # dwm3001_cdk_header.kicad_sch
 ## Purpose
-Provide the mating connector and pin mapping for the DWM3001-CDK J10 (26-pin header) and expose the minimal nets used by Thin-Pod v0.1.
+Provide the mating connector and pin mapping for the DWM3001CDK J10 header.
+
+## J10 ‘Raspberry Pi’ alignment note
+The J10 pins are aligned to Raspberry Pi pins 1–26 mechanically, but on the DWM3001CDK:
+- Pin 1 is NC
+- Pin 17 is NC
+
+So J10 cannot be used as a ‘3V3 in’ on pin 1/17.
 
 ## Sheet pins
 Inputs
-- `CDK_5V0`
 - `GND`
 - `ADC_IN0`
+- `CDK_5V0` (optional, bench-only)
 
 Optional inputs
 - `RESET_N`
@@ -14,20 +21,18 @@ Optional inputs
 ## Connector
 - `JCDK1` 2×13 socket header (mates to CDK J10)
 
-## J10 pin mapping table (Thin-Pod carrier v0.1)
-This matches the bench-ready pinouts note.
+## J10 mapping (Thin-Pod v0.1)
+Signal and ground used for Thin-Pod:
+| J10 pin | CDK label | Carrier net | Use |
+|--------:|----------|-------------|-----|
+| 6       | GND      | `GND`       | Ground reference for ADC |
+| 15      | GPIO_RPI | `ADC_IN0`   | ADC input (sensor after RC) |
+| 12      | RESET    | `RESET_N`   | Optional reset |
 
-| J10 pin | CDK label  | Carrier net | Thin-Pod use |
-|--------:|------------|-------------|--------------|
-| 2       | 5V0        | `CDK_5V0`    | Power in (optional via SJ1) |
-| 4       | 5V0        | `CDK_5V0`    | Power in (optional via SJ1) |
-| 6       | GND        | `GND`        | Ground return |
-| 15      | GPIO_RPI   | `ADC_IN0`    | ADC input (sensor signal after RC) |
-| 12      | RESET      | `RESET_N`    | Optional reset line |
+Optional power (bench-only):
+| J10 pin | CDK label | Carrier net |
+|--------:|----------|-------------|
+| 2       | 5V0      | `CDK_5V0`   |
+| 4       | 5V0      | `CDK_5V0`   |
 
-Ground pins that can be tied to `GND` if a second return is desired
-- 9, 14, 20, 25 (all GND options)
-
-## Optional footprints (DNP by default)
-- `R_ADC1` small series resistor on `ADC_IN0` near `JCDK1` (DNP if `R_SER1` is sufficient)
-- `DCLAMP1` clamp diode footprint to `3V3_SENSOR` and `GND` (DNP default)
+Optional extra grounds: 9 / 14 / 20 / 25 can also be tied to `GND`.
