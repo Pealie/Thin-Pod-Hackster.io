@@ -3,6 +3,8 @@
 ## Summary
 A bench-pragmatic Thin-Pod power strategy has been formalised and written up as an actionable wiring plan and validation checklist. The approach uses a single S7V8F3 buck regulator to generate a regulated 3.3 V system rail, then splits that rail to power both the ADXL1005 and the DWM3001CDK via its J1 `+ / −` battery/loose-wire input, while keeping the analogue ingest chain unchanged.
 
+Latest Thin-Pod bring-up iteration assembled on perfboard, integrating the DWM3001CDK, S7V8F3 buck module, and ADXL1005 breakout on a rigid carrier with a single battery-pack power feed, improving mechanical stability and wiring repeatability ahead of a dedicated PCB carrier.
+
 ## Key decisions
 - Selected a single-regulator architecture for prototyping:
   - `RAW_IN` → S7V8F3 → `3V3_SYS`
@@ -22,3 +24,5 @@ A bench-pragmatic Thin-Pod power strategy has been formalised and written up as 
 ## Notes
 - The analogue chain remains aligned to the established bench baseline (ADXL1005 Vout → RC low-pass → CDK ADC input).
 - The validation plan emphasises recording measured rail droop, current draw, and reset behaviour to de-risk the upcoming PCB carrier design.
+
+
