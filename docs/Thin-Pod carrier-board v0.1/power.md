@@ -1,68 +1,73 @@
-# power.kicad_sch
-## Purpose
-Accept `RAW_IN` via JST-PH2, regulate to `3V3_SYS` using an S7V8F3 module, then split:
+# Thin-Pod power plan (battery to DWM3001C-CDK + ADXL1005)
 
-- `3V3_CDK` → CDK battery pads/connector (`+` / `-`)
-- `3V3_A`   → ADXL1005 VDD
+## Summary
 
-Optional: keep a bench-only `CDK_5V0` path to J10 pins 2/4 for cases where 3V3 on VBAT is not viable.
+Power entry is treated as a single raw battery input feeding a single regulator, then split into two 3.3 V branches:
 
-## Sheet pins
-Inputs
-- `RAW_IN`
-- `GND`
+- RAW_IN via JST_BATT_IN (JST-PH2)
+- S7V8F3 generates 3V3_SYS
+- 3V3_SYS splits into:
+  - 3V3_CDK -> DWM3001C-CDK power via J1 holes ('+' / '-')
+  - 3V3_A -> ADXL1005 VDD (analogue branch)
 
-Outputs
-- `RAW_IN_PROT`
-- `3V3_SYS`
-- `3V3_CDK`
-- `3V3_A`
-- `CDK_5V0` (optional)
+## Block diagram
 
-## Input connector
-- `JBAT1` JST-PH-2 SMT right-angle
-  - 1: `RAW_IN`
-  - 2: `GND`
+JST_BATT_IN (RAW_IN) -> (optional PTC fuse) -> (reverse polarity protection) -> S7V8F3 -> 3V3_SYS -> { 3V3_CDK, 3V3_A }
 
-## Protection (recommended)
-- `D1` Schottky diode, series from `RAW_IN` to `RAW_IN_PROT` (reverse polarity protection)
-- `CIN1` bulk capacitor from `RAW_IN_PROT` to `GND`
-- `TP_RAW_IN`, `TP_RAW_IN_PROT`, `TP_GND`
+### Recommended protection and passives
 
-If `D1` drop is undesirable, replace with an ideal-diode PFET stage in a later revision.
+- Optional PTC fuse on RAW_IN sized for expected peak current.
+- Reverse polarity protection:
+  - simplest: Schottky diode in series with RAW_IN (voltage drop accepted), or
+  - preferred: ideal diode controller or PFET ideal diode arrangement.
+- Input bulk capacitance close to S7V8F3 VIN: 10 uF to 47 uF (low ESR) plus 100 nF.
+- Output capacitance close to S7V8F3 VOUT: 10 uF to 47 uF (low ESR) plus 100 nF.
 
-## Regulator module header (S7V8F3)
-- `JREG1` 1×03 header matching S7V8F3 pins
-  - 1: `RAW_IN_PROT` (VIN)
-  - 2: `GND`
-  - 3: `3V3_SYS` (VOUT)
+### Rail split guidance
 
-Decoupling near `3V3_SYS`
-- `C3V3_1` bulk capacitor `3V3_SYS` to `GND`
-- `C3V3_2` 100 nF `3V3_SYS` to `GND`
-- `TP_3V3_SYS`
+- 3V3_CDK: digital and RF load (DWM3001C-CDK).
+- 3V3_A: analogue load (ADXL1005). A ferrite bead (or small resistor) plus local decoupling is recommended to isolate high frequency digital current from the sensor rail.
 
-## 3V3 split (two branches, independently isolatable)
-### Branch A: CDK supply
-- `FB_CDK` ferrite bead footprint from `3V3_SYS` to `3V3_CDK` (populate as 0 Ω in v0.1 if desired)
-- `JP_CDK_EN` 2-pin jumper in series with `3V3_CDK` (default closed)
-- `C_CDK1` bulk capacitor from `3V3_CDK` to `GND` near the connector
-- `C_CDK2` 100 nF from `3V3_CDK` to `GND`
-- `JCDK_PWR1` 1×02 header for the flying lead to CDK pads
-  - 1: `3V3_CDK` (to CDK `+`)
-  - 2: `GND`     (to CDK `-`)
-- `TP_3V3_CDK`
+Typical analogue branch:
+- 3V3_SYS -> ferrite bead -> 3V3_A
+- 3V3_A decoupling at ADXL: 100 nF close to VDD, plus 1 uF to 4.7 uF nearby.
 
-### Branch B: sensor supply
-- `FB_A` ferrite bead footprint from `3V3_SYS` to `3V3_A` (populate as 0 Ω in v0.1 if desired)
-- `JP_SENSOR_EN` 2-pin jumper in series with `3V3_A` (default closed)
-- `C_A1` bulk capacitor from `3V3_A` to `GND`
-- `C_A2` 100 nF from `3V3_A` to `GND`
-- `TP_3V3_A`
+## DWM3001C-CDK power entry: J1
 
-## Optional bench-only: CDK J10 5V0 feed
-Keep only as an escape hatch.
-- `SJ5V` solder jumper from `RAW_IN_PROT` to `CDK_5V0` (open by default)
-- `TP_CDK_5V0`
+3V3_CDK is injected via J1 (two holes labelled '+' and '-').
 
-Only close `SJ5V` when `RAW_IN_PROT` is a verified 5 V rail.
+- J1 '+' <- 3V3_CDK
+- J1 '-' <- GND
+
+J1 is used instead of small battery pads to keep the interface robust and repeatable via headers.
+
+## Battery sense divider
+
+RAW_IN is routed to an ADC-capable pin via a resistive divider so VBATT logging remains available.
+
+Suggested starting point (for ~4.5 V max AA pack):
+- R_TOP = 180 kOhm
+- R_BOT = 100 kOhm
+- Divider ratio ~ 0.357, so 4.5 V maps to ~1.61 V.
+
+Add a small capacitor from the ADC node to ground to reduce noise and provide a stable sample node:
+- C_BATT_SENSE = 10 nF to 100 nF
+
+## Power-source interaction note (USB connected)
+
+When a USB cable is attached to the CDK for CLI access, the USB port can also provide power to the CDK. Simultaneous powering from USB and external 3V3_CDK risks backfeeding through unknown on-board power paths.
+
+Safer bench practice:
+- run from a single power source at a time, or
+- use a USB data-only cable (VBUS not connected), or
+- break the USB VBUS line, or
+- add explicit power OR-ing on the carrier when concurrent USB attachment is required.
+
+## Brownout policy (planning note)
+
+A minimum VBATT threshold should be enforced before UWB transmit to avoid unstable radio bursts and brownout resets.
+
+- VBATT_OK threshold: derive from measured current peaks and regulator headroom.
+- Policy: 'TX disabled' below threshold, logging continues; optional hard-off via EN.
+
+Optional: route the S7V8F3 EN pin to a GPIO for hard gating of 3V3_SYS.

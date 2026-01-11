@@ -1,47 +1,81 @@
-# Thin-Pod Option B carrier board v0.1
-## Power architecture: single battery input, single buck, split 3V3 to CDK + ADXL1005
+# Thin-Pod carrier board v0.1 (Option B)
 
-### Intent
-A single JST-PH2 battery input feeds an S7V8F3 buck regulator. The buck output is a single system 3.3 V rail, then split into two *separately configurable* branches:
+## Purpose
 
-- `3V3_CDK` → DWM3001CDK battery input pads/connector (labelled `+` / `-` on the CDK silkscreen)
-- `3V3_A` → ADXL1005 VDD
+A small carrier that turns a DWM3001C-CDK plus an ADXL1005 breakout into a repeatable Thin-Pod node by providing:
 
-This matches the Thin-Pod bench note where the ADXL1005 VDD is a 3V3 rail and its analogue Vout is taken into the CDK ADC via J10.15.
+- a defined power entry (JST_BATT_IN)
+- a single regulator stage (Pololu S7V8F3) generating 3V3_SYS
+- a split of 3V3_SYS into 3V3_CDK and 3V3_A
+- a simple anti-alias front-end and ADC header routing to the CDK (J10.15)
+- a battery sense divider to an ADC-capable pin for VBATT logging
 
-### CDK power entry note
-The DWM3001CDK is documented as being powerable from USB, Raspberry Pi interface, a battery, or an external power supply. The product brief calls out a 'Battery Connector' and shows `VBAT` feeding an on-board DC-DC to generate 3V3 rails.
+## Power architecture
 
-Because the product brief does not publish a numeric `VBAT` range, treat '3V3 into VBAT' as a bench-validated assumption:
-- If the CDK behaves normally (boots, stable current, stable 3V3 test point), keep it.
-- If the CDK fails to start or is unstable, revert to powering the CDK via its supported 5V entry (USB or J10 5V0) and keep the S7V8F3 3V3 rail for the sensor only.
+### Block diagram
 
-### Practical build convention (v0.1)
-- Use a 2-wire flying lead from the carrier to the CDK `+` / `-` pads.
-- Add an isolation element on the carrier (jumper or 0 Ω link) so the CDK can be disconnected when USB power is attached.
+JST_BATT_IN (RAW_IN) -> (optional PTC fuse) -> (reverse polarity protection) -> S7V8F3 -> 3V3_SYS -> { 3V3_CDK, 3V3_A }
 
-## Sheet structure
-- `power.kicad_sch`
-- `sensor_frontend.kicad_sch`
-- `dwm3001_cdk_header.kicad_sch`
+### Power entry
 
-## Net naming
-Power
-- `RAW_IN`
-- `RAW_IN_PROT`
-- `GND`
-- `3V3_SYS`
-- `3V3_CDK`
-- `3V3_A`
+- Connector: JST_BATT_IN (JST-PH2)
+- Net: RAW_IN
+- Intended sources: 3xAA pack, Li-ion pack within S7V8F3 VIN range, bench supply
 
-Analogue
-- `ACC_VOUT`
-- `ADC_IN0`
+### Regulator
 
-Optional bench-only power (kept off by default)
-- `CDK_5V0`
+- Module: Pololu S7V8F3
+- Input: RAW_IN
+- Output: 3V3_SYS (fixed 3.3 V)
+- Optional: EN routed to GPIO (hard gating)
 
-## Default analogue population (bench-matching)
-- `R_SER1 = 8.0 kΩ`
-- `C_SHUNT1 = 680 pF`
-- `C_PAR1` footprint present, DNP by default
+### Rail split
+
+- 3V3_CDK: branch to CDK power entry (J1).
+- 3V3_A: branch to ADXL1005 VDD, optionally isolated via ferrite bead.
+
+## CDK power entry
+
+The CDK is powered from the carrier via J1 holes on the DWM3001C-CDK.
+
+- J1 '+' <- 3V3_CDK
+- J1 '-' <- GND
+
+This avoids relying on small battery pads and keeps the interface header-friendly.
+
+## ADXL1005 power and signal
+
+### Sensor power
+
+- 3V3_A -> ADXL1005 VDD
+- Local decoupling at the sensor is expected (100 nF plus 1 uF to 4.7 uF).
+
+### ADC signal
+
+ADXL1005 VOUT is routed through a first-order low-pass into the CDK analogue input.
+
+- ACC_VOUT -> R_SER1 -> ADC_IN0
+- ADC_IN0 -> C_SHUNT1 -> GND
+- CDK entry: ADC_IN0 -> J10.15
+
+## Battery sense divider
+
+- RAW_IN -> divider -> VBATT_SENSE -> ADC pin
+- Add C_BATT_SENSE at the sense node for stability.
+
+Starter values for 3xAA:
+- R_TOP = 180 kOhm
+- R_BOT = 100 kOhm
+- C_BATT_SENSE = 10 nF to 100 nF
+
+## Default analogue population (bench matching)
+
+- R_SER1 = 8.0 kOhm
+- C_SHUNT1 = 680 pF
+- C_PAR1 footprint present, DNP by default
+
+## Practical cautions
+
+- USB attachment to the CDK can also provide power. Avoid simultaneous powering from USB and 3V3_CDK unless power OR-ing is explicitly designed in.
+- Keep GND common across battery, regulator, CDK, and sensor.
+- Place decoupling capacitors close to loads and keep the analogue node wiring short.

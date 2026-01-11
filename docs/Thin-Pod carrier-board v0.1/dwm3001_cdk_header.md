@@ -1,34 +1,36 @@
-# dwm3001_cdk_header.kicad_sch
-## Purpose
-Provide the mating connector and pin mapping for the DWM3001CDK J10 header for the Thin-Pod analogue path.
+# DWM3001C-CDK header notes (Thin-Pod bench wiring)
 
-The Thin-Pod bench note uses J10.15 as the ADC input.
+This note records the specific DWM3001C-CDK connection points used for Thin-Pod bench wiring, with the intent of translating the same connections onto a carrier PCB.
 
-## Sheet pins
-Inputs
-- `GND`
-- `ADC_IN0`
+## J1: external 3.3 V power entry (header holes)
 
-Optional inputs
-- `RESET_N`
+Purpose: inject regulated 3V3_CDK directly into the CDK power domain.
 
-Optional (bench-only)
-- `CDK_5V0`
+- Physical: two through-holes labelled '+' and '-' on the CDK silkscreen.
+- Usage: fit a 2-pin 2.54 mm header (or solder fly-leads) to the two holes.
 
-## Connector
-- `JCDK1` 2×13 socket header (mates to CDK J10)
+### Net mapping
 
-## Minimum pin mapping for Thin-Pod v0.1
-| J10 pin | Carrier net | Use |
-|--------:|-------------|-----|
-| 6       | `GND`       | Ground reference for ADC |
-| 15      | `ADC_IN0`   | ADC input (sensor after RC) |
-| 12      | `RESET_N`   | Optional reset |
+| CDK feature | Carrier net | Notes |
+|---|---|---|
+| J1 '+' | 3V3_CDK | Regulated 3.3 V from S7V8F3 (3V3_SYS branch) |
+| J1 '-' | GND | Common ground (battery, CDK, ADXL1005) |
 
-Optional bench-only:
-| J10 pin | Carrier net |
-|--------:|-------------|
-| 2       | `CDK_5V0`   |
-| 4       | `CDK_5V0`   |
+Bench validation: 3V3_CDK sourced from an S7V8F3 module into J1 boots the CDK and enables CLI and UWB operation.
 
-Optional extra grounds: 9 / 14 / 20 / 25 can also be tied to `GND`.
+## J10: analogue input header
+
+Purpose: route ADXL1005 VOUT into the nRF SAADC input on the CDK.
+
+- Signal: ADXL1005_VOUT (analogue)
+- Entry: J10.15 on the CDK header
+
+### Net mapping
+
+| CDK header pin | Carrier net | Function |
+|---|---|---|
+| J10.15 | ADC_IN0 | SAADC input (mapped to nRF P0.28, AIN4) |
+
+### Physical note
+
+J1 and J10.15 are treated as header-accessible points in the carrier design, rather than soldering to small test pads.
