@@ -2,7 +2,7 @@
 ## Purpose
 Provide the mating connector and pin mapping for the DWM3001CDK J10 header for the Thin-Pod analogue path.
 
-The Thin-Pod bench note uses J10.15 as the ADC input. fileciteturn16file9
+The Thin-Pod bench note uses J10.15 as the ADC input.
 
 ## Sheet pins
 Inputs
