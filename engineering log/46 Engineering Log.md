@@ -62,6 +62,44 @@ GND ----------------------------------+----------------> ADXL1005 GND
 - 10 kΩ pull-down provides a defined default low; the small series resistor is optional and can help with long leads and transients.
 
 
+### Alternative option (hard off): high-side P-MOSFET power gating
+STANDBY reduces current but does not fully power the device down. If near-zero sensor draw is required, a simple high-side P-MOSFET can switch ADXL1005 VDD on and off. A pull-up on the gate provides a defined default OFF state during CDK reset. The GPIO then pulls the gate low to turn the sensor ON.
+
+#### Simple wiring sketch (GPIO-controlled P-MOSFET high-side switch)
+```text
+                         DWM3001-CDK
+                     +------------------+
+                     |                  |
+3V3 (reg) -----------+------------------+-------------------+
+GND -----------------+------------------+-------------------+-----------------> ADXL1005 GND
+                                                         ___|___
+                                                        |       |
+                                                        | 10uF  |  (local decoupling)
+                                                        |_______|
+                                                            |
+                                                            +-----------------> ADXL1005 VDD
+                                                            |
+3V3 (reg) --------------------+-----------------------------+
+                              |
+                             [100k]   (gate pull-up, default OFF)
+                              |
+GPIOy (push-pull) ----[100Ω..1k]----+-----G
+                                    |
+                               S ---+--- P-MOSFET --- D
+                                    |
+3V3 (reg) --------------------------+
+
+Logic:
+- GPIOy HIGH (≈3V3) -> gate pulled to source -> P-MOSFET OFF -> ADXL1005 unpowered.
+- GPIOy LOW (0V)    -> Vgs negative -> P-MOSFET ON  -> ADXL1005 powered.
+```
+
+Notes:
+- The gate pull-up sets a deterministic OFF state at boot.
+- A small series resistor on the gate is optional and can reduce ringing on longer wires.
+- If Vout is wired to an ADC pin, ensure the ADC pin remains high-impedance when the sensor is off to avoid back-powering through protection structures. A small series resistor in the Vout line can help if needed.
+
+
 ## CDK ADC node identification
 - The analogue signal from the ADXL1005 was monitored at the CDK header ADC node: DWM3001C-CDK **J10.15**.
 - J10.15 is routed to the DWM3001C module as **P0.28**, which corresponds to **SAADC AIN4** on the nRF52.
