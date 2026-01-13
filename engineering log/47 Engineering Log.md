@@ -176,3 +176,27 @@ Logic:
 Notes:
 - If only one USB connector is ever used for laptop connection, USB_PRESENT can be taken from that single VBUS pin and the diode-OR can be omitted.
 - If SHDN wiring is long, a small series resistor (100 Ω) close to the SHDN pin can reduce ringing.
+
+
+## Pin allocation decisions for duty-cycling and regulator gating
+### ADXL1005 STB (standby) control
+ADXL1005 STB will be driven from the CDK Raspberry Pi header to enable duty-cycling via STB.
+
+- ADXL1005 STB -> CDK J10.24 (labelled 'CS_RPI', maps to module GPIO P0.30)
+- STB remains configured with a pull-down resistor to GND to guarantee a deterministic low during reset and GPIO high-impedance intervals. STB high enters standby. STB low enters measurement.
+
+### S7V8F3 SHDN gating control
+The external regulator shutdown will be controlled by the CDK using an NPN pull-down driver on SHDN.
+
+- SHDN pull-down driver control -> CDK J10.23 (labelled 'SPI1_CLK', maps to module GPIO P0.31)
+- The SHDN pin on S7V8F3 is held high by its internal pull-up to VIN when Q1 is off. Q1 on pulls SHDN low to disable the regulator.
+
+## Reverse-polarity protection (biscuit board battery input)
+A Schottky diode will be added in series with the battery pack positive rail on the biscuit board.
+
+- Battery + -> Schottky diode -> S7V8F3 VIN and downstream loads
+- Battery - -> GND (direct)
+
+Notes:
+- The Schottky forward drop reduces effective VIN. With a 3.3 V regulated output and a 4.5 V nominal battery pack, margin remains acceptable, but the drop should be accounted for in any low-battery cut-off criteria.
+- Candidate parts for bench use include SS14 class parts, or smaller low-Vf Schottky devices matched to the expected current.
