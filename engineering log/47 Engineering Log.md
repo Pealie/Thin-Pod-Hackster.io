@@ -200,3 +200,15 @@ A Schottky diode will be added in series with the battery pack positive rail on 
 Notes:
 - The Schottky forward drop reduces effective VIN. With a 3.3 V regulated output and a 4.5 V nominal battery pack, margin remains acceptable, but the drop should be accounted for in any low-battery cut-off criteria.
 - Candidate parts for bench use include SS14 class parts, or smaller low-Vf Schottky devices matched to the expected current.
+
+
+## Correction: SHDN gating from the CDK is not valid in the current topology
+The current bench topology uses the S7V8F3 as the primary 3.3 V supply for the DWM3001C-CDK. If SHDN is asserted low to disable the regulator, the CDK loses power and can no longer hold SHDN low or later deassert it. This creates an inherent self-disable condition and can lead to unintended oscillation (regulator off -> CDK off -> SHDN released by loss of drive -> regulator on -> CDK boots).
+
+Resolution:
+- Do not drive S7V8F3 SHDN from a CDK GPIO in the current topology.
+- Use ADXL1005 STB duty-cycling (via CDK J10.24) for power savings while keeping the 3.3 V rail enabled.
+- If future work requires disabling the battery-fed regulator while USB is present, implement SHDN control using a hardware USB-present detect circuit (diode-OR from J9/J20 VBUS into an NPN pull-down), which does not depend on the CDK remaining powered.
+
+Pin note:
+- CDK J10.23 remains a candidate control line for a future SHDN driver only if an always-on controller or a non-CDK power domain exists to maintain control during shutdown.
