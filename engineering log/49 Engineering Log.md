@@ -31,4 +31,4 @@
 - Start a KiCad carrier project using the v0.2 blocks as schematic drop-ins, then instantiate the draft THT footprints and validate placement with a 1:1 print against real modules.
 - Set up a Gateway firmware skeleton that includes a timing harness and a first end-to-end vibration frame path (buffering to FFT features to feature packet).
 - Decide the first DSP to TinyML contract (feature vector size and normalisation), then run feature parity tests before committing to a model deployment path (CMSIS-NN, TFLM, or STM32Cube.AI).
-- Add the Helium audit checks early so performance work stays measurable and regression-proof as the DSP pipeline grows. fileciteturn0file6
+- Add the Helium audit checks early so performance work stays measurable and regression-proof as the DSP pipeline grows.
