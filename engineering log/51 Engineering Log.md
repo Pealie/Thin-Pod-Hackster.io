@@ -60,7 +60,7 @@ ERC was iterated from an initial noisy report to a fully clean result. The final
 
   * Define board outline, mounting holes, and keep-out guidance around the UWB antenna region.
   * Assign footprints for all THT parts and headers.
-  * Run DRC continuously during placement and routing.
+  * Run Design Rule Check (DRC) continuously during placement and routing.
 
 * Prepare fabrication outputs:
 
