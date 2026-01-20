@@ -37,7 +37,7 @@ ERC was iterated from an initial noisy report to a fully clean result. The final
 
 ## ERC progression
 
-* Baseline ERC captured:
+* Baseline Electrical Rules Checker (ERC) captured:
 
   * 17 errors and 3 warnings, dominated by connector symbol definition issues, missing power-source declarations, and library mismatches.
 
