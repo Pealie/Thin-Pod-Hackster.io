@@ -1,22 +1,22 @@
-# Qorvo DWM3001C-DK (CDK) — dimensions from caliper photos
+# Qorvo DWM3001C-DK (CDK) — dimensions from calipers
 
-## Raw caliper readouts observed in the photos
+## Raw caliper readouts observed 
 
 ### Board / antenna dimensions (first photo set)
 
-| Photo (filename) | What the caliper appears to be measuring | Reading (mm) |
+| Photo (filename) | caliper measuring | Reading (mm) |
 |---|---:|---:|
 | ED7EE7E2-066B-4EAE-812F-5D1568E23299.jpeg | Overall dimension **including the antenna tab** (outside-to-outside) | **62.63** |
 | 11AE8079-058E-4E1A-804D-3E07E82857AF.jpeg | PCB **overall length/width excluding antenna tab** (outside-to-outside of PCB) | **54.23** |
 | 7756AE82-784A-424D-9349-239CE12C242D.jpeg | PCB **other side dimension** (outside-to-outside) | **43.17** |
 | 5B5E8B64-99E7-44C7-9115-6938B0538E7E.jpeg | Antenna-tab **projection** beyond the PCB edge (interpreted) | **19.49** |
 
-### J1 and J10 pin-location readouts (second photo set, user-labelled)
+### J1 and J10 pin-location readouts (second photo set, labelled)
 
 > These four photos show only the caliper readout (the jaws are not visibly on the features in-frame), so the **numerical values can be recorded**, but the **exact geometric interpretation** (which edge/hole is the reference) cannot be independently verified from the images alone.  
 > Negative sign is treated as “direction from the zero reference”, so **use magnitude unless the sign convention is required**.
 
-| Photo (filename) | Label from message | Reading (mm) |
+| Photo (filename) | Label | Reading (mm) |
 |---|---|---:|
 | FE50EC06-6562-435A-817A-BEF2CD3856CB.jpeg | J10 **pin 15** (as measured) | **-21.27** |
 | AC7167E7-58A7-478D-A18F-46167481698D.jpeg | J10 **pin 16** (as measured) | **-12.65** |
@@ -45,7 +45,7 @@ Practical “keep-out” rectangle covering PCB + antenna tab:
 Independently of the offset measurements above, if J1 is implemented as a standard 2-pin header footprint:
 - **Pitch (centre-to-centre) between adjacent header pins:** **2.54 mm**
 
-The two user-labelled J1 caliper readouts recorded in the second photo set are:
+The two labelled J1 caliper readouts recorded in the second photo set are:
 - **23.48 mm** and **8.90 mm** (reference geometry not visible in-frame).
 
 ## J10 ‘Raspberry Pi’ header spacing (mechanical)
