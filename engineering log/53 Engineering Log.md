@@ -26,5 +26,5 @@ Artefact: `Qorvo_DWM3001_CDK_Suitability_ThinPod.md`
 - Raw streaming over UWB remains a conditional mode best used for triggered windows or sparse captures, with routine operation favouring on-node feature extraction plus event-driven snippets.
 
 ## Files generated (paths in this workspace)
-- `sandbox:/mnt/data/STM32_NUCLEO_N657X0_Q_Specs_TinyML_ThinPod.md`
-- `sandbox:/mnt/data/Qorvo_DWM3001_CDK_Suitability_ThinPod.md`
+`https://github.com/Pealie/Thin-Pod-Hackster.io/tree/main/docs/STM32_NUCLEO_N657X0_Q_Specs_TinyML_ThinPod.md`
+`https://github.com/Pealie/Thin-Pod-Hackster.io/tree/main/docs/Qorvo_DWM3001_CDK_Suitability_ThinPod.md`
