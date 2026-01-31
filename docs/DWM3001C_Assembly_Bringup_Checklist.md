@@ -41,6 +41,49 @@ An assembly-oriented checklist for integrating the **Qorvo DWM3001C** module ont
 
 ---
 
+## Pin budget mapping for Thin-Pod (concrete proposal)
+A concrete mapping for programming, console logging, and recovery straps is defined below against the DWM3001C pin list.
+
+Reference pins:
+- VDD: pin 12
+- SWD_CLK: pin 2
+- SWD_DIO: pin 3
+- RESET (active-low): pin 47
+- P0.28: pin 33
+- P0.30: pin 43
+
+### 0.1 Recommended net mapping
+| Function | Thin-Pod net name | DWM3001C signal | DWM3001C pin | Notes |
+|---|---|---:|---:|---|
+| Module supply | 3v3+ | VDD | 12 | Local decoupling placed per power intent. |
+| Ground | GND | GND | 1, 11, 21, 38, 48 | Multiple ground castellations stitched to the ground plane. |
+| SWD clock | SWD_CLK | SWD_CLK | 2 | Routed to SWD access footprint (Tag-Connect or header). |
+| SWD data | SWD_DIO | SWD_DIO | 3 | Routed to SWD access footprint (Tag-Connect or header). |
+| Reset | nRESET_UWB | RESET (P0.18) | 47 | Active-low. Optional pull-up and reset button may be fitted. |
+| UART TX (module to host) | UWB_UART_TX | P0.06 | 24 | Assigned as UART TX in firmware. Routed to 3.3 V USB-UART pads. Optional 33 Ω series resistor close to the module. |
+| UART RX (host to module) | UWB_UART_RX | P0.07 | 40 | Assigned as UART RX in firmware. Routed to 3.3 V USB-UART pads. Optional 33 Ω series resistor close to the module. |
+| Recovery strap (sampled at boot) | BOOT_RECOVERY_N | P0.02 | 46 | Default HIGH via ~100 kΩ pull-up to 3v3+. Test pad and optional button to GND. Firmware enters safe mode or DFU path when LOW at reset. |
+| Verbose logging strap (sampled at boot) | BOOT_VERBOSE | P0.15 | 32 | Default LOW via ~100 kΩ pull-down to GND. Test pad. Firmware enables extended UART logging when HIGH. |
+| Analogue sensing input | ADC_NODE | P0.28 | 33 | Candidate ADC input node. Earlier Thin-Pod mapping used this as the ADC channel. |
+| Gate drive or chip select | PFET_GATE or CS_UWB | P0.30 | 43 | Candidate digital control. Earlier Thin-Pod mapping used this as a push-pull control line. |
+
+### 0.2 SWD header, probe, and test-pad convention
+A minimal SWD access footprint provides:
+- VREF (3v3+)
+- GND
+- SWDIO (SWD_DIO)
+- SWCLK (SWD_CLK)
+- nRESET (nRESET_UWB)
+
+Where Tag-Connect is used, an aligned trio of tooling holes is included for repeatable attachment.
+
+### 0.3 Pins treated as reserved by default
+- P0.09 and P0.10 are NFC-capable pins and remain uncommitted unless NFC is explicitly required.
+- I2C0_SDA and I2C0_SCL are present as dedicated pins and may already be used internally by the on-module accelerometer.
+- USB_N and USB_P remain unconnected unless a carrier-board USB function is explicitly implemented.
+
+---
+
 ## 1. Footprint checks
 ### 1.1 Library and land pattern
 - DWM3001C footprint verified against vendor land pattern: pad count, pad geometry, pitch, numbering, courtyard, fab outline.
@@ -192,6 +235,7 @@ Exit criteria:
 
 ### 5.5 Stage 4: Flash a minimal firmware image
 - Minimal test image flashed that performs:
+  - Boot strap sampling (BOOT_RECOVERY_N and BOOT_VERBOSE) and reporting their state over UART
   - Safe clock initialisation
   - GPIO or LED toggle at a known rate
   - UART boot message output
@@ -200,9 +244,11 @@ Exit criteria:
 - Program and verify pass.
 - GPIO toggling observable.
 - UART output deterministic.
+- Boot strap states are printed at boot and match the expected pull-up and pull-down defaults.
 
 ### 5.6 Stage 5: UART logging baseline
 - USB to UART adapter connected at 3.3 V logic levels:
+  - BOOT_RECOVERY_N and BOOT_VERBOSE pads remain accessible during logging for controlled strap assertion tests
   - TX and RX wiring verified (crossed correctly)
   - Common GND confirmed
 - Terminal settings logged:
@@ -218,6 +264,10 @@ If UART output is absent:
 
 Exit criteria:
 - Repeatable UART boot log captured across multiple resets.
+
+Additional strap tests:
+- BOOT_RECOVERY_N held LOW during reset results in entry to the recovery behaviour defined in firmware.
+- BOOT_VERBOSE forced HIGH during reset results in extended logging output.
 
 ### 5.7 Stage 6: Peripheral sanity and timing baseline
 - GPIO sanity:
