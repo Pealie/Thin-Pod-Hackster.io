@@ -200,8 +200,6 @@ That is a healthier framing than asking whether the gateway should have been Lin
 
 ## Recommendation for Thin-Pod
 
-### Recommendation in one sentence
-
 **Retain the N657 as the Thin-Pod gateway, and treat Linux as an optional later supervisory tier rather than as a replacement gateway requirement.**
 
 ## Recommended N657 gateway responsibilities
