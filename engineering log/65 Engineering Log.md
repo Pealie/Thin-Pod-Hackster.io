@@ -1,5 +1,8 @@
 # 65 Engineering Log
 
+**Project:** Thin-Pod  
+**Date:** 2026-04-27  
+
 ## Thin-Pod PCB: evening update
 
 This evening’s work moved the Thin-Pod PCB from a routed but still slightly untidy state into a clean ERC/DRC state suitable for manufacturing-prep review.
