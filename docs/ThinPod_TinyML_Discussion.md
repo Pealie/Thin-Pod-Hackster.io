@@ -392,7 +392,7 @@ In short:
 
 \[3] Qorvo, DWM3001C product page. https://www.qorvo.com/products/p/DWM3001C
 
-\[4] Nordic Semiconductor, nRF52833 Product Specification, key features. https://docs.nordicsemi.com/bundle/ps\_nrf52833/page/keyfeatures\_html5.html
+\[4] Nordic Semiconductor, nRF52833 Product Specification, key features. https://docs.nordicsemi.com/
 
 \[5] STMicroelectronics, STM32N6 series product page. https://www.st.com/en/microcontrollers-microprocessors/stm32n6-series.html
 
