@@ -382,7 +382,7 @@ Pod-side inference comes later, once the data proves what the model should be le
 
 In short:
 
-> \*\*ThinPod should begin as a vibration instrument, mature into an edge analytics instrument, and only then become a TinyML product.\*\*
+> ThinPod should begin as a vibration instrument, mature into an edge analytics instrument, and only then become a TinyML product.
 
 ## References
 
