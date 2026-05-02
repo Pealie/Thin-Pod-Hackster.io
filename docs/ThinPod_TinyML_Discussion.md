@@ -400,7 +400,7 @@ In short:
 
 \[7] STMicroelectronics, X-CUBE-AI product page. https://www.st.com/en/embedded-software/x-cube-ai.html
 
-\[8] Arm, CMSIS-DSP software library documentation. https://arm-software.github.io/CMSIS\_5/DSP/html/index.html
+\[8] Arm, CMSIS-DSP software library documentation. https://github.com/ARM-software/CMSIS-DSP 
 
 \[9] Arm, CMSIS-NN software library documentation. https://arm-software.github.io/CMSIS-NN/latest/
 
