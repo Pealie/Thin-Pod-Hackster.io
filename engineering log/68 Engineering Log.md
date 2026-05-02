@@ -58,7 +58,7 @@ The XIAO ESP32-C6 DIP/header approach remains best for rev 0.1 because it keeps 
 
 Care is still required around XIAO power. During bring-up, avoid unintentionally powering the XIAO from both USB-C and the NUCLEO 3.3 V rail unless the back-feed behaviour has been checked.
 
-DWM reset should remain on an ordinary controllable GPIO, not on the NUCLEO NRST line. This preserves independent firmware control of the DWM3001C-CDK reset signal.
+DWM reset should remain on an ordinary controllable GPIO, not on the NUCLEO NRST line. This preserves independent firmware control of the DWM3001C-CDK reset signal. Also, consider weak pull-ups, around 10 kΩ to 3V3, on both CS lines so neither peripheral is accidentally selected during reset.
 
 ## Next steps
 
