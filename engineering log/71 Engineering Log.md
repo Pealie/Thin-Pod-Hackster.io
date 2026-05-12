@@ -7,7 +7,7 @@
 
 ## High-level overview
 
-The Thin-Pod rev 0.1 PCB arrived today. This marks an important project milestone: the design has moved from schematic, layout, Gerber generation and manufacturer preview into a physical manufactured board that can now be inspected, assembled and measured.
+The Thin-Pod rev 0.1 PCB arrived. This marks an important project milestone: the design has moved from schematic, layout, Gerber generation and manufacturer preview into a physical manufactured board that can now be inspected, assembled and measured.
 
 Initial visual checks were carried out on both sides of the bare PCB. The board outline, rounded corners, solder mask, silkscreen, drill holes, mounting holes, test points and main component footprints all appear broadly consistent with the intended rev 0.1 design. The front side clearly shows the major functional areas: the DWM3001C-CDK interface section, the ADXL1005 sensor section, the Pololu regulator footprint, the PFET switching section, the power-entry path, the diode footprint, the fuse footprint and the labelled test points. The rear side also appears clean, with no obvious fabrication damage visible during the first inspection.
 
