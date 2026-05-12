@@ -57,4 +57,4 @@ Only after the bare-board checks pass, begin staged assembly with the power-entr
 
 Today was primarily an arrival, inspection and documentation milestone. No dramatic electrical result was required. The important thing is that Thin-Pod rev 0.1 is now a physical PCB and the project can move into disciplined bring-up, measurement and evidence capture.
 
-A small celebration is justified.
+A small celebration is justified!
