@@ -48,17 +48,15 @@ It was also noted that the ADXL1005 **STANDBY** and **ST/self-test** pins are pr
 
 ## Current verdict
 
-Thin-Pod rev 0.1 has now achieved a significant bring-up milestone. The CDK can power from the board once the missing ground return is patched, the PFET-switched accelerometer rail is working, the ADXL1005 output is sitting near the expected mid-rail bias, and the filtered output responds visibly to mechanical taps on the oscilloscope.
+Thin-Pod rev 0.1 has now achieved a significant bring-up milestone. The CDK can power from the board once the missing ground return was patched, the PFET-switched accelerometer rail is working, the ADXL1005 output is sitting near the expected mid-rail bias, and the filtered output responds visibly to mechanical taps on the oscilloscope.
 
 The main rev 0.1 hardware issue discovered today is the CDK ground-return problem at J1. The soldered jumper is an acceptable rev 0.1 test workaround, but it is not a final design solution. The main rev 0.2 design corrections are to make the CDK ground connection explicit and robust, and to add defined low states for the ADXL1005 STANDBY and ST pins.
 
 ## Next steps
 
-Repeat the CDK power-up test from battery with the soldered jumper fitted, confirming that the red LED flashes reliably and that the CDK ground loop is common with Thin-Pod ground.
-
-Capture a quieter oscilloscope baseline on TP7, then repeat the dynamic test using a more repeatable vibration source such as a small motor, fan, electric toothbrush, phone vibration motor, or mechanically coupled speaker tone.
+Repeat the CDK power-up test from battery with the fitted soldered jumper fitted. Capture a quieter oscilloscope baseline on TP7, then repeat the dynamic test using a more repeatable vibration source such as a small motor, fan, electric toothbrush, phone vibration motor, or mechanically coupled speaker tone.
 
 Begin checking whether the CDK can read the filtered accelerometer output through the intended ADC path on **GPIO\_RPI / P0.28**.
 
-Record the rev 0.2 corrections explicitly: fix the CDK J1/ground footprint or wiring strategy, add a robust CDK ground connection, add STANDBY and ST pulldowns for the ADXL1005, and consider exposing self-test through a test pad or MCU-controlled line.
+Record the rev 0.2 corrections explicitly: fix the CDK J1/ground footprint or wiring strategy, add a robust CDK ground connection, add STANDBY and ST pulldowns for the ADXL1005, and will an exposing self-test through a test pad or MCU-controlled line to be considered.
 
