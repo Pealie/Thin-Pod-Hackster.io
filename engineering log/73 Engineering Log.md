@@ -14,7 +14,7 @@ A temporary Dupont jumper was then fitted between **J1−** and the confirmed **
 
 ## Ground-link refinement and ADXL1005 dynamic test
 
-After the temporary Dupont ground link confirmed the missing CDK ground return, I replaced it with a short, mechanically secure soldered jumper between the Thin-Pod ground path and the confirmed CDK ground loop. This changed the earlier proof-of-life workaround into a more stable rev 0.1 test configuration.
+After the temporary Dupont ground link confirmed the missing CDK ground return, replaced with a short, mechanically secure soldered jumper between the Thin-Pod ground path and the confirmed CDK ground loop. This changed the earlier proof-of-life workaround into a more stable rev 0.1 test configuration.
 
 With the soldered ground jumper fitted, the CDK powered correctly from the battery input and the red LED flashed as expected. The common ground reference was therefore stable enough for continued analogue testing.
 
