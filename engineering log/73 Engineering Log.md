@@ -54,7 +54,7 @@ The main rev 0.1 hardware issue discovered today is the CDK ground-return proble
 
 ## Next steps
 
-Repeat the CDK power-up test from battery with the fitted soldered jumper fitted. Capture a quieter oscilloscope baseline on TP7, then repeat the dynamic test using a more repeatable vibration source such as a small motor, fan, electric toothbrush, phone vibration motor, or mechanically coupled speaker tone.
+Repeat the CDK power-up test from battery with the fitted soldered jumper. Capture a quieter oscilloscope baseline on TP7, then repeat the dynamic test using a more repeatable vibration source such as a small motor, fan, electric toothbrush, phone vibration motor, or mechanically coupled speaker tone.
 
 Begin checking whether the CDK can read the filtered accelerometer output through the intended ADC path on **GPIO\_RPI / P0.28**.
 
