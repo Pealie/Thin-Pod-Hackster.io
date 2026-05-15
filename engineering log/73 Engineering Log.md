@@ -58,5 +58,5 @@ Repeat the CDK power-up test from battery with the fitted soldered jumper. Captu
 
 Begin checking whether the CDK can read the filtered accelerometer output through the intended ADC path on **GPIO\_RPI / P0.28**.
 
-Record the rev 0.2 corrections explicitly: fix the CDK J1/ground footprint or wiring strategy, add a robust CDK ground connection, add STANDBY and ST pulldowns for the ADXL1005, and will an exposing self-test through a test pad or MCU-controlled line to be considered.
+Record the rev 0.2 corrections explicitly: fix the CDK J1/ground footprint or wiring strategy, add a robust CDK ground connection, add STANDBY and ST pulldowns for the ADXL1005, and an exposing self-test through a test pad or MCU-controlled line is to be considered.
 
