@@ -297,7 +297,7 @@ TinyML should come later, after the measurement chain is repeatable. The correct
 
 ## What makes Thin-Pod creative
 
-Thin-Pod is not creative because vibration sensing is new. It is creative because it turns vibration telemetry into a small, inspectable, open and teachable system.
+Thin-Pod is creative because it turns vibration telemetry into a small, inspectable, open and teachable system.
 
 Most hobby projects either stop at 'sensor reads value' or jump too quickly to 'AI predicts fault'. Thin-Pod deliberately fills the space between those extremes. It treats the analogue front end, power path, grounding, ADC node, radio payload and gateway as first-class engineering objects. That makes the project more credible and more useful.
 
