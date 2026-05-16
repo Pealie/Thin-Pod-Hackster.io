@@ -313,8 +313,6 @@ The ADXL1005 control pins also need defined inactive states. STANDBY should be p
 
 The physical placement can also improve. The regulator and local sensor conditioning components should be reviewed so that the sensor supply and analogue path are shorter, cleaner and easier to probe. Rev 0.1 is good enough for bring-up; rev 0.2 should make the discovered assumptions explicit in copper.
 
-```
-
 ## Competition fit
 
 Thin-Pod fits the Best of 2025 Competition as an MCU-centred embedded systems project. It uses development boards in a real hardware application, documents the build path, includes a custom PCB, exposes a complete BOM, and has a clear contribution beyond a one-off demo.
