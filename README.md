@@ -56,6 +56,7 @@ Typical deployment: one gateway can listen to multiple pods and produce per‑as
 ```
 thin-pod/
 
+├─ KiCad/								#Fabrication/Gerber files
 ├─ docs/								# Design notes, app notes, datasheet list
 ├─ engineering logs/					# High level summaries
 ├─ images/								# Renders, photos, diagrams
