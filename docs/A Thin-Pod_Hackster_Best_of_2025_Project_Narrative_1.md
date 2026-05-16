@@ -18,7 +18,7 @@ The project also uses UWB in a slightly different way from many hobby builds. Ra
 
 ## Relevance
 
-A beginner can build a sensor that blinks an LED when something vibrates. Thin-Pod aims at the next level: a documented measurement chain that starts to resemble a real engineering instrument.
+Thin-Pod aims to be a documented measurement chain that is useful as an engineering instrument.
 
 The project is useful because it sits at a fertile boundary between analogue electronics, embedded firmware, RF transport, mechanical measurement, DSP and open hardware. It is not trying to replace an HBK, Dewesoft, SKF or Bently Nevada system. It is a small, legible platform for learning how such systems begin: a sensor, a power supply, grounding discipline, signal conditioning, sampling, transport, and a gateway that can convert raw vibration into useful information.
 
