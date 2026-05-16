@@ -264,7 +264,7 @@ Battery or rail status
 Packet count and dropped-frame count
 ```
 
-TinyML should come later, after the measurement chain is repeatable. The correct sequence is: first a vibration instrument, then an edge analytics instrument, then a TinyML product.
+TinyML should come later, after the measurement chain is repeatable. The correct sequence is: first a vibration instrument, then an edge analytics instrument, followed by a TinyML product.
 
 ## Bill of materials
 
