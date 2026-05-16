@@ -322,7 +322,7 @@ Against the judging rubric:
 |Criterion|How Thin-Pod addresses it|
 |-|-|
 |Project Documentation|Engineering logs, staged bring-up, PCB screenshots, photographs, measurements and demo plan|
-|Complete BOM|Sensor, UWB boards, regulator, passives, connectors, tools and software listed|
+|Complete BOM|Sensor, MCU, UWB boards, regulator, passives, connectors, tools and software listed|
 |Schematics|KiCad schematic, PCB, Gerbers and test-point map available|
 |Code \& Contribution|Qorvo bring-up baseline, planned ADC sampler, Gateway SPI/DSP structure, documented firmware staging|
 |Creativity|UWB used as local vibration telemetry, open instrumentation approach, gateway DSP/TinyML path|
