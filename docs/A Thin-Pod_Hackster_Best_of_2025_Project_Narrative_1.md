@@ -16,7 +16,7 @@ The project uses the Analog Devices ADXL1005 as the vibration sensor. Its analog
 
 The project also uses UWB in a slightly different way from many hobby builds. Rather than treating UWB only as an indoor-positioning technology, Thin-Pod treats it as a robust local transport layer for short vibration data windows. The design direction is not to stream everything forever. A better systems approach is to capture short, meaningful windows of vibration, attach metadata, and transmit selected frames to a gateway for analysis. That keeps the radio traffic realistic and leaves a clear path towards multi-pod systems.
 
-## Why this matters
+## Relevance
 
 A beginner can build a sensor that blinks an LED when something vibrates. Thin-Pod aims at the next level: a documented measurement chain that starts to resemble a real engineering instrument.
 
