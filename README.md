@@ -56,9 +56,9 @@ Typical deployment: one gateway can listen to multiple pods and produce per‑as
 ```
 thin-pod/
 
-├─ docs/							# Design notes, app notes, datasheet list
+├─ docs/								# Design notes, app notes, datasheet list
 ├─ engineering logs/					# High level summaries
-├─ images/							# Renders, photos, diagrams
+├─ images/								# Renders, photos, diagrams
 ├─ src/rotor-fault-detection-c			# Pod + gateway firmware (C/C++)
 ├─ LICENCE-HARDWARE.md
 ├─ LICENCE-FIRMWARE.md
