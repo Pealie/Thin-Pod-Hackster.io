@@ -60,7 +60,7 @@ thin-pod/
 ├─ docs/								# Design notes, app notes, datasheet list
 ├─ engineering logs/					# High level summaries
 ├─ images/								# Renders, photos, diagrams
-├─ src/rotor-fault-detection-c			# Pod + gateway firmware (C/C++)
+├─ src/rotor-fault-detection-c/			# Pod + gateway firmware (C/C++)
 ├─ LICENCE-HARDWARE.md
 ├─ LICENCE-FIRMWARE.md
 ├─ LICENCE-DOCS.md
