@@ -84,7 +84,7 @@ RC filter and ADC/test point path
 DWM3001C-CDK interface
 ```
 
-The board includes labelled test points for the major rails and signal nodes. These were not added as decoration. They are central to the project philosophy: every important stage should be measurable.
+The board includes labelled test points for the major rails and signal nodes. They are central to the project philosophy as every important stage should be measurable.
 
 ## Thin-Pod rev 0.1 hardware
 
