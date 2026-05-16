@@ -1,4 +1,4 @@
-# Thin-Pod: a small open-hardware vibration telemetry platform using UWB
+# Thin-Pod: a small open-hardware vibration telemetry platform using UWB (Ultra Wide Band)
 
 ## Short description
 
