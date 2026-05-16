@@ -188,7 +188,7 @@ Inspect the manufacturer preview
 Place the order
 ```
 
-This was one of the most important practical achievements of the project. Thin-Pod became not only a circuit, but a reproducible manufacturing package.
+This was one of the most important practical achievements of the project, Thin-Pod becoming a reproducible manufacturing package.
 
 ### 6\. Bring up the manufactured board
 
