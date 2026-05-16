@@ -54,7 +54,7 @@ DSP, feature extraction, logging and future TinyML
 
 ## What was built
 
-The first stage was not a PCB. It was a controlled bench system.
+The first stage was a controlled bench system.
 
 The DWM3001C-CDK boards were flashed, their console behaviour was brought under control, and a known-good UWB baseline was established. One board was configured on the Thin-Pod side and the other on the Gateway side. The Thin-Pod side produced continuous listener reports, and the Gateway side produced repeated successful ranging notifications. That closed the first major uncertainty: the radio link and firmware baseline worked before the analogue sensor path was added.
 
