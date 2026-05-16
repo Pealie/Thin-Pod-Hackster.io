@@ -112,7 +112,7 @@ This build is organised around **MCU dev boards**
 
 Repository locations (as they become available):
 
-- `firmware/` — embedded code (pod sampling + radio packets; gateway receive + DSP/ML)
+- `src/rotor-fault-detection-c/` — embedded code (pod sampling + radio packets; gateway receive + DSP/ML)
 - `tools/` — Python scripts/notebooks for feature extraction, plotting, model training
 
 **Gateway responsibilities (typical):**
