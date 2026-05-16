@@ -157,7 +157,7 @@ This stage was important because it created the project’s central test philoso
 
 ### 3\. Replace loose wiring with a rigid prototype
 
-The project then moved from breadboard wiring to a perfboard prototype. This reduced intermittent wiring behaviour and made the physical layout easier to understand. It also helped define which connections needed named nets, test points and mechanical support on the PCB.
+The project then moved from breadboard wiring to a perfboard prototype, then to a manufactured PCB. This reduced intermittent wiring behaviour and made the physical layout easier to understand. It also helped define which connections needed named nets, test points and mechanical support on the PCB.
 
 ### 4\. Translate the bench system into KiCad
 
