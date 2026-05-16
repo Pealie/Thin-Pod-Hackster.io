@@ -331,5 +331,5 @@ Against the judging rubric:
 
 Thin-Pod rev 0.1 is now a real manufactured object with measured evidence behind it. The board has powered up, the accelerometer rail works, the filtered ADXL1005 output sits at the expected bias, and mechanical taps produce a clear dynamic response on the oscilloscope. The UWB link has already been brought up separately, giving the project a credible path from sensor node to gateway.
 
-The next step is firmware integration: sample the filtered accelerometer output, packetise short vibration windows, transport them across UWB and hand them to the STM32 gateway for feature extraction. That is where Thin-Pod moves towards a small open vibration telemetry platform: visible, measurable, reproducible and scalable.
+The next step is firmware integration: sample the filtered accelerometer output, packetise short vibration windows, transport them across UWB and hand them to the STM32 gateway for feature extraction. This is where Thin-Pod moves from a one-off sensor board towards a compact open vibration-telemetry platform, with a measurement chain that can be inspected, tested, reproduced and scaled.
 
