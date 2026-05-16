@@ -52,6 +52,8 @@ Thin-Pod rev 0.1 has now achieved a significant bring-up milestone. The CDK can 
 
 The main rev 0.1 hardware issue discovered today is the CDK ground-return problem at J1. The soldered jumper is an acceptable rev 0.1 test workaround, but it is not a final design solution. The main rev 0.2 design corrections are to make the CDK ground connection explicit and robust, and to add defined low states for the ADXL1005 STANDBY and ST pins.
 
+Do not rely on the CDK J1− pad alone as the carrier ground return. Add an explicit carrier-to-CDK ground bond using a confirmed CDK GND feature, such as the ground loop or a verified J10 GND pin.
+
 ## Next steps
 
 Repeat the CDK power-up test from battery with the fitted soldered jumper. Capture a quieter oscilloscope baseline on TP7, then repeat the dynamic test using a more repeatable vibration source such as a small motor, fan, electric toothbrush, phone vibration motor, or mechanically coupled speaker tone.
