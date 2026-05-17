@@ -4,7 +4,7 @@
 
 Thin-Pod treats security as part of measurement integrity. A vibration alert is only meaningful if the sensor, firmware, calibration state, packet path, gateway processing version, model version and decision record can be traced and trusted.
 
-This document defines the security and trust posture for the Thin-Pod platform. It is intentionally short and practical. It is a starting point for rev 0.1 and should evolve as the hardware, firmware and gateway architecture mature.
+This document defines the security and trust posture for the Thin-Pod platform. It is intentionally short and practical. It is a starting point for rev 0.2 and should evolve as the hardware, firmware and gateway architecture mature.
 
 ## Security posture
 
