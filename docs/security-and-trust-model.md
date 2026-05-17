@@ -165,16 +165,6 @@ Recommended rev 0.2 actions:
 7. Keep all signing keys and credentials out of the repository.
 8. Document which security features are implemented, planned or not yet supported.
 
-## Pitch language
-
-Preferred:
-
-> Thin-Pod is secure-ready open hardware for trusted vibration telemetry, edge DSP and machine-learning-based condition monitoring.
-
-Avoid until implemented and tested:
-
-> Thin-Pod is secure.
-
 ## Summary
 
 Thin-Pod’s security model is not only about protecting communications. It is about making machine-health evidence trustworthy. The system should be able to answer: which device measured this vibration, under what calibration and firmware state, how it was transmitted, how it was processed, which model interpreted it, and how confident the gateway should be in the resulting diagnostic statement.
