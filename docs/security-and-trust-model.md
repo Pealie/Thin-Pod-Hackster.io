@@ -150,7 +150,7 @@ Private or controlled:
 
 ## Current rev 0.1 status
 
-Thin-Pod rev 0.1 should be treated as a research and bring-up platform. Rev 0.2 security task is to define the evidence chain and metadata model before hard security claims are made.
+Thin-Pod rev 0.1 should be treated as a research and bring-up platform. Rev 0.2 security tasks are to define the evidence chain and metadata model before hard security claims are made.
 
 Recommended rev 0.2 actions:
 
